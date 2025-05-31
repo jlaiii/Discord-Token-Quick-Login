@@ -1,0 +1,59 @@
+// ==UserScript==
+// @name         Discord Token Quick Login
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Adds an easy button to inject your Discord token and login quickly on the Discord login page.
+// @author       YourName
+// @match        https://discord.com/login
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    // Create and style the Inject Token button
+    const btn = document.createElement("button");
+    btn.innerText = "Inject Token";
+    btn.style.position = "fixed";
+    btn.style.top = "20px";
+    btn.style.right = "20px";
+    btn.style.zIndex = 9999;
+    btn.style.padding = "10px 15px";
+    btn.style.background = "#7289DA";
+    btn.style.color = "white";
+    btn.style.border = "none";
+    btn.style.borderRadius = "4px";
+    btn.style.cursor = "pointer";
+    btn.style.fontSize = "14px";
+    btn.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+
+    document.body.appendChild(btn);
+
+    // Function to inject token into localStorage
+    function login(token) {
+        // Inject token inside an iframe's localStorage repeatedly to bypass potential restrictions
+        const interval = setInterval(() => {
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            iframe.contentWindow.localStorage.token = `"${token}"`;
+            document.body.removeChild(iframe);
+        }, 50);
+
+        // Stop injecting after 2.5 seconds and reload to log in
+        setTimeout(() => {
+            clearInterval(interval);
+            location.reload();
+        }, 2500);
+    }
+
+    // Handle button click: prompt for token and inject
+    btn.addEventListener("click", () => {
+        const token = prompt("Enter your Discord token:");
+        if (token && token.trim() !== "") {
+            login(token.trim());
+        } else {
+            alert("No token entered.");
+        }
+    });
+})();
