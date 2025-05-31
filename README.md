@@ -38,6 +38,16 @@ A lightweight userscript that adds a handy **Inject Token** button on Discord's 
 
 ---
 
+## Roadmap
+
+- **Account Switching & Profiles**  
+  Save multiple tokens as profiles to easily switch between Discord accounts.
+
+- **UI Improvements**  
+  Enhance the button and prompt design for a smoother user experience.
+
+---
+
 ## Security & Disclaimer
 
 ⚠️ **Important:** Keep your Discord token private. Never share it with anyone or paste it into untrusted scripts.
