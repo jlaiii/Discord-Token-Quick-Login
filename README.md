@@ -1,56 +1,79 @@
-# Discord Token Quick Login
+# Discord Token Utilities
 
-A lightweight userscript that adds a handy **Inject Token** button on Discord's login page, allowing you to quickly log in by injecting your Discord token directly into the browser's localStorage.
+A collection of two Tampermonkey userscripts to help with Discord token management:
+
+1. **Discord Token Display Panel (Modern UI)**  
+   Displays your current Discord token in a slide-out panel on any Discord page, with options to copy and refresh.
+
+2. **Discord Token Quick Login UI**  
+   Adds a login panel to Discord’s login page where you can quickly input a token and log in with an animated spinner showing progress.
 
 ---
 
 ## Features
 
-- Adds a fixed "Inject Token" button on [https://discord.com/login](https://discord.com/login).
-- Prompts for your Discord token and injects it automatically.
-- Reloads the page to log you in instantly.
-- Simple, clean UI with no external dependencies.
-- Works with Tampermonkey, Greasemonkey, or any compatible userscript manager.
+### Discord Token Display Panel (Modern UI)
+- Fixed slide-out panel on the right side of the screen
+- Shows your Discord token in a read-only textarea
+- Copy token to clipboard with one click
+- Refresh button to manually update token display
+- Auto-refreshes every 2 seconds
+- Toggle panel visibility with a hamburger menu button
+
+### Discord Token Quick Login UI
+- Simple token input panel at the top center of the Discord login page
+- Login button sets token in localStorage repeatedly for reliability
+- Animated spinner shows login progress
+- Automatically reloads the page after 2.5 seconds to log in
 
 ---
 
 ## Installation
 
-1. Install a userscript manager if you don't have one:
-   - [Tampermonkey](https://www.tampermonkey.net/)
-   - [Greasemonkey](https://www.greasespot.net/)
-
-2. Create a new userscript in your manager and paste the content of the script file.
-
-3. Navigate to [https://discord.com/login](https://discord.com/login).
-
-4. Click the **Inject Token** button at the top-right of the page.
-
-5. Paste your Discord token when prompted and watch the page reload to log you in.
+1. Install [Tampermonkey](https://www.tampermonkey.net/) (or a compatible userscript manager) in your browser.
+2. Create two new userscripts using the provided script code files.
+3. Ensure the scripts are enabled.
+4. Visit [https://discord.com](https://discord.com) and enjoy enhanced token management.
 
 ---
 
 ## Usage
 
-- Click the **Inject Token** button.
-- Enter your Discord token in the prompt.
-- The token will be injected, and the page will reload to complete login.
+- **Token Display Panel:**  
+  Navigate anywhere on Discord after enabling the script. Click the hamburger icon on the right to toggle the panel. Copy or refresh your token as needed.
 
----
-
-## Roadmap
-
-- **Account Switching & Profiles**  
-  Save multiple tokens as profiles to easily switch between Discord accounts.
-
-- **UI Improvements**  
-  Enhance the button and prompt design for a smoother user experience.
+- **Quick Login UI:**  
+  Go to [https://discord.com/login](https://discord.com/login). Enter your token and click *Login*. Watch the spinner animation while logging in.
 
 ---
 
 ## Security & Disclaimer
 
-⚠️ **Important:** Keep your Discord token private. Never share it with anyone or paste it into untrusted scripts.
+- **WARNING:** Using Discord tokens directly can compromise your account security if exposed.  
+- Only use tokens you own and keep them private.  
+- These scripts do not collect or transmit your token outside your browser.  
+- Use at your own risk.
 
-- This script is for personal use only.
-- Modifies browser localStorage to simulate login.
+---
+
+## Contributing
+
+Feel free to submit issues or pull requests to improve these utilities.
+
+---
+
+## License
+
+MIT License © YourName
+
+---
+
+## Scripts Included
+
+- `discord-token-display-panel.user.js`  
+- `discord-token-quick-login.user.js`
+
+---
+
+Thanks for checking out this project!  
+If you want me to help generate a full repo structure or upload to GitHub, just ask.
