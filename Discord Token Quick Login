@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Discord Token Quick Login
+// @name         Discord Token Quick Login UI (Top Center)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Adds an easy button to inject your Discord token and login quickly on the Discord login page.
+// @version      1.2
+// @description  Adds a login panel with token input to the top center of the Discord login page. Disappears if user navigates away.
 // @author       YourName
 // @match        https://discord.com/login
 // @grant        none
@@ -11,49 +11,84 @@
 (function () {
     'use strict';
 
-    // Create and style the Inject Token button
-    const btn = document.createElement("button");
-    btn.innerText = "Inject Token";
-    btn.style.position = "fixed";
-    btn.style.top = "20px";
-    btn.style.right = "20px";
-    btn.style.zIndex = 9999;
-    btn.style.padding = "10px 15px";
-    btn.style.background = "#7289DA";
-    btn.style.color = "white";
-    btn.style.border = "none";
-    btn.style.borderRadius = "4px";
-    btn.style.cursor = "pointer";
-    btn.style.fontSize = "14px";
-    btn.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+    function createLoginPanel() {
+        // Container
+        const panel = document.createElement('div');
+        panel.id = 'token-login-panel';
+        panel.style.position = 'fixed';
+        panel.style.top = '60px'; // Not very top, slight offset
+        panel.style.left = '50%';
+        panel.style.transform = 'translateX(-50%)';
+        panel.style.background = '#2c2f33';
+        panel.style.padding = '15px';
+        panel.style.borderRadius = '8px';
+        panel.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+        panel.style.zIndex = 9999;
+        panel.style.display = 'flex';
+        panel.style.gap = '10px';
+        panel.style.alignItems = 'center';
 
-    document.body.appendChild(btn);
+        // Input
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Enter Discord token';
+        input.style.flex = '1';
+        input.style.padding = '8px';
+        input.style.border = 'none';
+        input.style.borderRadius = '4px';
+        input.style.outline = 'none';
+        input.style.fontSize = '14px';
+        input.style.width = '250px';
 
-    // Function to inject token into localStorage
-    function login(token) {
-        // Inject token inside an iframe's localStorage repeatedly to bypass potential restrictions
-        const interval = setInterval(() => {
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-            iframe.contentWindow.localStorage.token = `"${token}"`;
-            document.body.removeChild(iframe);
-        }, 50);
+        // Button
+        const button = document.createElement('button');
+        button.innerText = 'Login';
+        button.style.padding = '8px 12px';
+        button.style.background = '#7289DA';
+        button.style.color = 'white';
+        button.style.border = 'none';
+        button.style.borderRadius = '4px';
+        button.style.cursor = 'pointer';
 
-        // Stop injecting after 2.5 seconds and reload to log in
-        setTimeout(() => {
-            clearInterval(interval);
-            location.reload();
-        }, 2500);
+        // Button logic
+        button.addEventListener('click', () => {
+            const token = input.value.trim();
+            if (!token) return alert('Please enter a token.');
+
+            const interval = setInterval(() => {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                iframe.contentWindow.localStorage.token = `"${token}"`;
+                document.body.removeChild(iframe);
+            }, 50);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                location.reload();
+            }, 2500);
+        });
+
+        // Assemble
+        panel.appendChild(input);
+        panel.appendChild(button);
+        document.body.appendChild(panel);
     }
 
-    // Handle button click: prompt for token and inject
-    btn.addEventListener("click", () => {
-        const token = prompt("Enter your Discord token:");
-        if (token && token.trim() !== "") {
-            login(token.trim());
+    // Detect URL changes to hide/show panel
+    const observer = new MutationObserver(() => {
+        if (location.pathname === '/login') {
+            if (!document.getElementById('token-login-panel')) createLoginPanel();
         } else {
-            alert("No token entered.");
+            const panel = document.getElementById('token-login-panel');
+            if (panel) panel.remove();
         }
     });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Create panel if already on login page
+    if (location.pathname === '/login') {
+        createLoginPanel();
+    }
 })();
