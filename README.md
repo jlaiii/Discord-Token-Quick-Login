@@ -62,12 +62,6 @@ Feel free to submit issues or pull requests to improve these utilities.
 
 ---
 
-## License
-
-MIT License © YourName
-
----
-
 ## Scripts Included
 
 - `discord-token-display-panel.user.js`  
