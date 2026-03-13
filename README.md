@@ -12,6 +12,16 @@ This repository contains two primary artifacts:
 
 These tools are intended for development, testing, and personal account debugging only. They are not intended for misuse.
 
+## Website & Install
+
+- Project site / demo: https://jlaiii.github.io/Discord-Token-Quick-Login/
+- Direct install (open these links in your browser with a userscript manager to install):
+	- https://jlaiii.github.io/Discord-Token-Quick-Login/Discord%20Token%20Quick%20Login.user.js
+	- https://jlaiii.github.io/Discord-Token-Quick-Login/Discord%20Token%20Display%20Panel.user.js
+	- https://jlaiii.github.io/Discord-Token-Quick-Login/index.html
+
+Clicking the `.user.js` links should prompt your userscript manager (Tampermonkey/Greasemonkey) to install the scripts. If the links open as text, right-click and choose "Open in new tab" or use your userscript manager's "Add new script from URL" feature.
+
 ## Features
 
 - Display the current Discord token in a convenient panel.
