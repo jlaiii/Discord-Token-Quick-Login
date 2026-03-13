@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Token Tools | UserScripts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #313338;
+            color: #dbdee1;
+            font-family: 'gg sans', 'Noto Sans', sans-serif;
+        }
+        .discord-card {
+            background-color: #2b2d31;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .discord-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .btn-blurple {
+            background-color: #5865f2;
+            transition: background-color 0.2s;
+        }
+        .btn-blurple:hover {
+            background-color: #4752c4;
+        }
+        .btn-github {
+            background-color: #1e1f22;
+            border: 1px solid #4e5058;
+        }
+        .btn-github:hover {
+            background-color: #35373c;
+        }
+        .status-badge {
+            background-color: #23a559;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+        <div class="flex justify-center mb-4">
+            <i class="fab fa-discord text-6xl text-[#5865f2]"></i>
+        </div>
+        <h1 class="text-4xl font-bold text-white mb-2">Discord Token Tools</h1>
+        <p class="text-gray-400 max-w-md mx-auto">Enhance your Discord web experience with powerful automation and inspection scripts.</p>
+        
+        <div class="mt-6">
+            <a href="https://github.com/jlaiii/Discord-Token-Quick-Login" target="_blank" class="btn-github inline-flex items-center px-6 py-2 rounded-full text-white font-medium">
+                <i class="fab fa-github mr-2"></i> View on GitHub
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+        
+        <!-- Script 1: Quick Login -->
+        <div class="discord-card rounded-xl p-6 flex flex-col">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-3 bg-[#5865f222] rounded-lg">
+                    <i class="fas fa-right-to-bracket text-2xl text-[#5865f2]"></i>
+                </div>
+                <span class="status-badge">v1.3</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Token Quick Login</h3>
+            <p class="text-gray-400 mb-6 flex-grow">
+                Adds a professional login panel directly to the Discord login page. Enter your token and login instantly without needing credentials.
+            </p>
+            <div class="flex flex-col gap-3">
+                <a href="https://github.com/jlaiii/Discord-Token-Quick-Login/raw/main/Discord%20Token%20Quick%20Login.user.js" class="btn-blurple text-center py-3 rounded-md text-white font-bold">
+                    <i class="fas fa-download mr-2"></i> Install Script
+                </a>
+                <p class="text-xs text-center text-gray-500 italic">Requires Tampermonkey extension</p>
+            </div>
+        </div>
+
+        <!-- Script 2: Token Display -->
+        <div class="discord-card rounded-xl p-6 flex flex-col">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-3 bg-[#23a55922] rounded-lg">
+                    <i class="fas fa-eye text-2xl text-[#23a559]"></i>
+                </div>
+                <span class="status-badge">v2.0</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Token Display Panel</h3>
+            <p class="text-gray-400 mb-6 flex-grow">
+                A modern sidebar panel that allows you to view, copy, and refresh your current session token with a single click.
+            </p>
+            <div class="flex flex-col gap-3">
+                <a href="https://github.com/jlaiii/Discord-Token-Quick-Login/raw/main/Discord%20Token%20Display%20Panel.user.js" class="btn-blurple text-center py-3 rounded-md text-white font-bold">
+                    <i class="fas fa-download mr-2"></i> Install Script
+                </a>
+                <p class="text-xs text-center text-gray-500 italic">Compatible with all browsers</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Discord Token Tools. For educational purposes only.</p>
+        <div class="mt-2 flex justify-center gap-4">
+            <a href="#" class="hover:text-white">Privacy</a>
+            <a href="#" class="hover:text-white">Support</a>
+            <a href="https://github.com/jlaiii/Discord-Token-Quick-Login" class="hover:text-white">Docs</a>
+        </div>
+    </footer>
+
+</body>
+</html>
