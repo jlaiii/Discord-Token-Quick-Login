@@ -1,73 +1,53 @@
-# Discord Token Utilities
+# Discord Token Quick Login & Display Panel
 
-A collection of two Tampermonkey userscripts to help with Discord token management:
+A small userscript and local panel for quickly viewing and reusing Discord tokens for development and debugging purposes.
 
-1. **Discord Token Display Panel (Modern UI)**  
-   Displays your current Discord token in a slide-out panel on any Discord page, with options to copy and refresh.
+## Overview
 
-2. **Discord Token Quick Login UI**  
-   Adds a login panel to Discord’s login page where you can quickly input a token and log in with an animated spinner showing progress.
+This repository contains two primary artifacts:
 
----
+- `Discord Token Quick Login.user.js` — a userscript that provides a quick-login helper for Discord using a token.
+- `Discord Token Display Panel.user.js` — a userscript that adds a panel to display the current token.
+- `index.html` — a simple local page to demo or host the display panel.
+
+These tools are intended for development, testing, and personal account debugging only. They are not intended for misuse.
 
 ## Features
 
-### Discord Token Display Panel (Modern UI)
-- Fixed slide-out panel on the right side of the screen
-- Shows your Discord token in a read-only textarea
-- Copy token to clipboard with one click
-- Refresh button to manually update token display
-- Auto-refreshes every 2 seconds
-- Toggle panel visibility with a hamburger menu button
-
-### Discord Token Quick Login UI
-- Simple token input panel at the top center of the Discord login page
-- Login button sets token in localStorage repeatedly for reliability
-- Animated spinner shows login progress
-- Automatically reloads the page after 2.5 seconds to log in
-
----
+- Display the current Discord token in a convenient panel.
+- Quickly log in using a saved token (convenience for developers).
+- Simple, lightweight, and easily installed via a userscript manager.
 
 ## Installation
 
-1. Install [Tampermonkey](https://www.tampermonkey.net/) (or a compatible userscript manager) in your browser.
-2. Create two new userscripts using the provided script code files.
-3. Ensure the scripts are enabled.
-4. Visit [https://discord.com](https://discord.com) and enjoy enhanced token management.
+1. Install a userscript manager in your browser (for example, Tampermonkey or Greasemonkey).
+2. Open the `.user.js` files from this repository in the browser or your editor and install them with the userscript manager.
+3. Reload Discord in the same browser profile; the scripts add UI elements/panels for the token display and quick login.
 
----
+Alternatively, open `index.html` locally in a browser to view or test the display panel.
 
 ## Usage
 
-- **Token Display Panel:**  
-  Navigate anywhere on Discord after enabling the script. Click the hamburger icon on the right to toggle the panel. Copy or refresh your token as needed.
+- Use these scripts only on accounts you own for debugging or development.
+- After installing the userscripts, open Discord in the same browser and look for the added panel or quick-login UI.
 
-- **Quick Login UI:**  
-  Go to [https://discord.com/login](https://discord.com/login). Enter your token and click *Login*. Watch the spinner animation while logging in.
+Do not share tokens or use these tools to access accounts you do not own.
 
----
+## Security & Legal Notice
 
-## Security & Disclaimer
-
-- **WARNING:** Using Discord tokens directly can compromise your account security if exposed.  
-- Only use tokens you own and keep them private.  
-- These scripts do not collect or transmit your token outside your browser.  
-- Use at your own risk.
-
----
+- WARNING: Discord tokens are extremely sensitive credentials. Anyone with access to a token can control the corresponding account.
+- Use these tools only on accounts you own or have explicit permission to test.
+- Unauthorized access to accounts is illegal and a violation of Discord's Terms of Service.
+- The author is not responsible for misuse. Use at your own risk.
 
 ## Contributing
 
-Feel free to submit issues or pull requests to improve these utilities.
+Contributions are welcome for bug fixes, documentation improvements, and safety hardening. Please open issues or pull requests.
 
----
+## License
 
-## Scripts Included
+This project is provided under the MIT License. See `LICENSE` if present or add one if you want a different license.
 
-- `discord-token-display-panel.user.js`  
-- `discord-token-quick-login.user.js`
+## Acknowledgements
 
----
-
-Thanks for checking out this project!  
-If you want me to help generate a full repo structure or upload to GitHub, just ask.
+This utility is meant for convenience during development. Consider safer alternatives that do not expose credentials when possible.
